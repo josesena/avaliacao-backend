@@ -1,27 +1,26 @@
 package br.com.backend.backendavaliacao.modelo;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
+@Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class PrecoMedio {
 
-    private List<Double> valor;
-    public List<String> getValor() {
-        if(valor != null){
-            List<String> list = new ArrayList<>();
-            valor.forEach(v ->{
-                list.add("Dados Sensiveis");
-            });
-            return list;
-        }
+    private List<String> valor;
 
-        return null;
+    public List<String> getValor() {
+        if(!Objects.isNull(this.valor)){
+            this.valor = this.valor.stream().map(v -> v != null ? "Dados Sensiveis" : v).collect(Collectors.toList());
+        }
+        return valor;
     }
 }
