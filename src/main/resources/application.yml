@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://root:root@localhost/avaliacao?authSource=admin
+  servilet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
